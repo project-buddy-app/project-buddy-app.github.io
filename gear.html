@@ -189,9 +189,32 @@ footer nav a:hover{color:#fff;text-decoration:underline}
 footer .disc{max-width:52em;margin:10px auto 0;border-top:1px solid rgba(170,205,255,.16);padding-top:14px}
 
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* Sidebar nav — slim fixed rail, all site links (2026-11-12) */
+.sidenav{display:none}
+@media(min-width:900px){
+  body{padding-left:212px}
+  .sidenav{display:flex;flex-direction:column;gap:2px;position:fixed;left:0;top:0;width:212px;height:100vh;height:100dvh;overflow-y:auto;padding:16px 12px;background:linear-gradient(180deg,rgba(13,26,48,.97),rgba(8,15,30,.97));border-right:1px solid rgba(170,205,255,.22);z-index:60}
+  .sidenav a{display:block;padding:10px;border-radius:10px;text-decoration:none;font-weight:600;font-size:14.5px;color:#dcecfc;white-space:nowrap}
+  .sidenav a:hover{background:rgba(255,255,255,.08);color:#fff}
+  .sidenav a.active{background:rgba(242,183,5,.16);color:#ffd94d;box-shadow:inset 3px 0 0 #f2b705}
+}
 </style>
 </head>
 <body>
+<aside class="sidenav" aria-label="Site">
+  <a href="index.html">Home</a>
+  <a href="estimating.html">Estimating &amp; Drafting</a>
+  <a href="estimating.html#quote-check">Quote Check</a>
+  <a href="apps.html">The Apps</a>
+  <a href="apps.html#family">The Buddy App Family</a>
+  <a href="packages.html">Plan Packages</a>
+  <a href="forms.html">Forms &amp; Freebies</a>
+  <a class="active" href="gear.html">Gear Store</a>
+  <a href="diy.html">DIY Corner</a>
+  <a href="index.html#about">About</a>
+</aside>
+
 
 <header class="topnav">
   <div class="nav-inner">
