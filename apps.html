@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="data:,">
+<title>The Buddy Apps — Project Buddy</title>
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+html,body{margin:0;padding:0}
+body{
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  color:#dbe7fa;
+  background:
+    radial-gradient(1100px 600px at 85% -10%, rgba(46,96,178,.34), transparent 60%),
+    radial-gradient(900px 700px at -10% 30%, rgba(20,52,110,.30), transparent 55%),
+    radial-gradient(800px 500px at 110% 85%, rgba(255,210,31,.07), transparent 50%),
+    linear-gradient(180deg,#0a1120 0%,#060a13 100%);
+  min-height:100vh;
+  line-height:1.5;
+}
+a{color:inherit}
+button{font-family:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+img{max-width:100%}
+
+/* NAV */
+.topnav{position:sticky;top:12px;z-index:50;max-width:1120px;margin:14px auto 0;padding:0 14px}
+.nav-inner{
+  display:flex;align-items:center;justify-content:space-between;gap:14px;
+  padding:10px 12px 10px 18px;border-radius:999px;
+  background:linear-gradient(165deg, rgba(52,82,138,.92), rgba(10,18,34,.94));
+  border:1px solid rgba(170,205,255,.30);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.30), inset 0 -8px 18px rgba(0,0,0,.30), 0 14px 34px rgba(0,0,0,.45);
+}
+.logo{font-weight:900;letter-spacing:.14em;font-size:19px;color:#eef5ff;text-decoration:none;line-height:1;white-space:nowrap}
+.logo em{font-style:normal;color:#ffd21f}
+.logo small{display:block;letter-spacing:.13em;font-size:8.5px;color:#9dbdea;font-weight:700;margin-top:3px}
+.nav-links{display:none;gap:4px}
+.nav-links a{font-size:13.5px;font-weight:600;color:#c3d9f6;text-decoration:none;padding:10px 12px;border-radius:999px;min-height:40px;display:inline-flex;align-items:center}
+.nav-links a:hover{background:rgba(255,255,255,.10);color:#fff}
+.nav-links a.active{background:rgba(255,210,31,.18);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.25)}
+.nav-cta{
+  background:linear-gradient(180deg,#fff3a0,#ffe970 30%,#ffd21f 55%,#e6a800);color:#241a00 !important;
+  font-weight:800 !important;box-shadow:inset 0 1px 0 rgba(255,255,255,.85), inset 0 -6px 12px rgba(146,96,0,.35), 0 4px 12px rgba(0,0,0,.35)
+}
+.menu-btn{min-height:44px;min-width:44px;border-radius:999px;border:1px solid rgba(170,205,255,.30);background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,.05));color:#eaf3ff;font-size:20px;box-shadow:inset 0 1px 0 rgba(255,255,255,.30)}
+.mobile-menu{display:none;margin-top:8px;padding:10px;border-radius:18px;background:rgba(10,18,34,.97);border:1px solid rgba(170,205,255,.24);box-shadow:inset 0 1px 0 rgba(255,255,255,.14)}
+.mobile-menu.open{display:grid}
+.mobile-menu a{padding:12px 14px;border-radius:12px;text-decoration:none;font-weight:600;color:#dcecfc}
+.mobile-menu a:hover{background:rgba(255,255,255,.08)}
+@media(min-width:900px){.nav-links{display:flex}.menu-btn{display:none}.mobile-menu{display:none!important}}
+
+/* LAYOUT */
+.wrap{max-width:1120px;margin:0 auto;padding:0 16px 56px}
+section{margin-top:54px}
+.section-head{max-width:720px;margin-bottom:18px}
+.section-head h2{font-size:clamp(26px,4vw,36px);line-height:1.05;letter-spacing:-.02em;color:#eef5ff;margin:0 0 8px;font-weight:900}
+.section-head p{margin:0;color:#b3cbe9;font-size:15.5px;line-height:1.6}
+.kicker{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#ffd21f;font-weight:800;margin-bottom:8px}
+
+/* GLASS — rich reflective finish; shine lives in the background layer only */
+.glass{
+  position:relative;overflow:hidden;
+  background:linear-gradient(165deg,#2b4470 0%,#16263f 42%,#0a1222 100%);
+  border:1px solid rgba(170,205,255,.26);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.30), inset 0 -14px 28px rgba(0,0,0,.28), 0 18px 40px rgba(0,0,0,.42);
+}
+.glass::before{content:"";position:absolute;inset:0;background:linear-gradient(115deg,rgba(255,255,255,.20),rgba(255,255,255,.04) 32%,transparent 52%);pointer-events:none}
+.glass::after{content:"";position:absolute;left:6%;right:6%;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);pointer-events:none}
+.glass > *{position:relative;z-index:1}
+
+/* BUTTONS */
+.btn{min-height:48px;padding:12px 20px;border-radius:999px;border:1px solid rgba(170,205,255,.30);font-weight:800;font-size:15px;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;position:relative;overflow:hidden}
+.btn::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.35),transparent 55%);pointer-events:none}
+.btn > *{position:relative}
+.btn.small{min-height:42px;padding:9px 16px;font-size:14px}
+.btn-yellow{background:linear-gradient(180deg,#fff3a0,#ffe970 30%,#ffd21f 55%,#e6a800);color:#241a00;border-color:rgba(0,0,0,.3);box-shadow:inset 0 1px 0 rgba(255,255,255,.85), inset 0 -6px 12px rgba(146,96,0,.35), 0 8px 18px rgba(0,0,0,.35)}
+.btn-ghost{background:linear-gradient(180deg,rgba(120,170,240,.22),rgba(255,255,255,.06));color:#eaf3ff;box-shadow:inset 0 1px 0 rgba(255,255,255,.30)}
+.btn:active{transform:translateY(1px)}
+.pill{font-size:12px;font-weight:700;letter-spacing:.02em;padding:7px 11px;border-radius:999px;background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.05));border:1px solid rgba(170,205,255,.22);color:#cfe2f9}
+a.pill{text-decoration:none}
+a.pill:hover{border-color:rgba(255,210,31,.5);color:#fff}
+
+/* HERO */
+.hero{margin-top:22px;border-radius:30px;padding:28px 22px 24px}
+.hero-grid{display:grid;gap:24px}
+@media(min-width:900px){.hero-grid{grid-template-columns:1.15fr .85fr;align-items:center}.hero{padding:38px 36px}}
+.hero h1{font-size:clamp(36px,6.6vw,60px);line-height:.98;letter-spacing:-.02em;margin:0;color:#fff;font-weight:950}
+.hero h1 span{color:#ffd21f}
+.hero .tagline{font-size:clamp(18px,2.6vw,24px);font-weight:700;color:#eaf3ff;margin:14px 0 10px;line-height:1.25}
+.hero .lede{color:#c3d9f6;font-size:16px;line-height:1.65;margin:0;max-width:34em}
+.hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.hero-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+
+/* HERO DEVICE - mini Framer Buddy mock */
+.device{border-radius:22px;padding:16px;background:linear-gradient(180deg,#10203c,#060e1c);border:1px solid rgba(140,185,255,.30);box-shadow:inset 0 1px 0 rgba(255,255,255,.22), inset 0 3px 14px rgba(0,0,0,.7)}
+.device-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px}
+.device-top b{letter-spacing:.14em;font-size:15px;color:#eef5ff}
+.device-top b em{font-style:normal;color:#ffd21f}
+.device-top span{font-size:9px;letter-spacing:.18em;color:#7fb0e6;text-transform:uppercase;text-align:right;line-height:1.4}
+.screen{border-radius:14px;background:#050b16;border:1px solid rgba(140,185,255,.22);padding:12px 14px;margin-bottom:12px;box-shadow:inset 0 1px 0 rgba(255,255,255,.10)}
+.screen small{font-family:ui-monospace,Consolas,monospace;font-size:10px;letter-spacing:.12em;color:#7fb0e6}
+.screen strong{display:block;font-family:ui-monospace,Consolas,monospace;font-size:32px;text-align:right;color:#eaf6ff;font-weight:500;text-shadow:0 0 14px rgba(110,180,255,.35);margin-top:4px}
+.screen span{display:block;text-align:right;font-family:ui-monospace,Consolas,monospace;font-size:12px;color:#9cc2e8}
+.keygrid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}
+.key{min-height:46px;border-radius:11px;border:1px solid rgba(255,255,255,.18);background:linear-gradient(180deg,rgba(255,255,255,.22),rgba(255,255,255,.05) 46%,rgba(0,0,0,.22));box-shadow:inset 0 1px 0 rgba(255,255,255,.35);color:#e9f2ff;font-weight:700;font-size:13px;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1}
+.key small{font-size:7.5px;letter-spacing:.08em;text-transform:uppercase;color:rgba(200,222,252,.75);margin-bottom:3px}
+.key.yellow{background:linear-gradient(180deg,#fff3a0,#ffd21f 48%,#e6a800);color:#241a00}
+.key.yellow small{color:rgba(60,44,0,.7)}
+.key.blue{background:linear-gradient(180deg,rgba(90,150,235,.95),#2563b8 48%,#173f7c)}
+.device-note{margin-top:12px;display:flex;justify-content:space-between;font-size:12px;color:#9dbdea}
+.device-note b{color:#dcecfc}
+
+/* STRIP */
+.strip{margin-top:16px;border-radius:18px;padding:14px 16px;display:grid;gap:12px}
+@media(min-width:760px){.strip{grid-template-columns:repeat(3,1fr)}}
+.strip div b{display:block;color:#fff;font-size:14.5px;margin-bottom:2px}
+.strip div span{font-size:13.5px;color:#b3cbe9;line-height:1.5;display:block}
+
+/* CARDS & GRIDS */
+.two-grid,.three-grid{display:grid;gap:12px}
+@media(min-width:760px){.two-grid{grid-template-columns:1fr 1fr}.three-grid{grid-template-columns:repeat(3,1fr)}}
+.card{border-radius:20px;padding:20px}
+.card h3{margin:0 0 6px;font-size:20px;color:#fff}
+.card p{margin:0 0 12px;color:#b3cbe9;font-size:14.5px;line-height:1.6}
+.card ul{margin:0 0 16px;padding-left:18px;color:#cfe2f9;font-size:14px;line-height:1.7}
+.card .price{font-size:13px;color:#ffd968;font-weight:700;margin-bottom:12px}
+.card .big-icon{font-size:34px;margin-bottom:10px}
+.badge{font-size:10.5px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;padding:6px 9px;border-radius:999px;white-space:nowrap;display:inline-block}
+.badge-ready{background:linear-gradient(180deg,#ffe970,#f5c400);color:#241a00;box-shadow:inset 0 1px 0 rgba(255,255,255,.7)}
+.badge-works{background:rgba(255,255,255,.10);color:#cfe2f9;border:1px solid rgba(170,205,255,.28)}
+.status{font-size:13.5px;font-weight:700;color:#ffd968;margin:0 0 12px}
+.status.plain{color:#9dbdea;font-weight:600}
+.more{font-size:14px;font-weight:800;color:#ffd968;text-decoration:none}
+.more:hover{color:#ffe970;text-decoration:underline}
+
+/* PRICE NOTE */
+.price-note{border-radius:18px;padding:18px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
+.price-note strong{color:#fff;font-size:16px;display:block}
+.price-note span{color:#b3cbe9;font-size:14px}
+.price-boxes{display:flex;gap:10px;flex-wrap:wrap}
+.price-box{border-radius:14px;padding:12px 14px;background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.04));border:1px solid rgba(170,205,255,.22);min-width:150px;box-shadow:inset 0 1px 0 rgba(255,255,255,.22)}
+.price-box b{font-size:20px;color:#ffd21f;display:block;line-height:1}
+.price-box span{font-size:12.5px}
+
+/* BANNER */
+.banner{border-radius:22px;padding:22px;display:grid;gap:14px}
+@media(min-width:800px){.banner{grid-template-columns:1.3fr .7fr;align-items:center}}
+.banner h3{margin:0 0 6px;font-size:22px;color:#fff}
+.banner p{margin:0;color:#b3cbe9;line-height:1.6;font-size:15px}
+.banner-side{display:flex;flex-direction:column;gap:10px;align-items:stretch;justify-content:center}
+
+/* GEAR */
+.gear-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(min-width:860px){.gear-grid{grid-template-columns:repeat(4,1fr)}}
+.gear{border-radius:18px;padding:18px}
+.gear .icon{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;font-size:24px;background:linear-gradient(180deg,rgba(255,255,255,.20),rgba(255,255,255,.05));border:1px solid rgba(255,255,255,.20);box-shadow:inset 0 1px 0 rgba(255,255,255,.35);margin-bottom:12px}
+.gear h3{margin:0 0 4px;color:#fff;font-size:16px}
+.gear p{margin:0;color:#b3cbe9;font-size:13.5px;line-height:1.55}
+
+/* STEPS */
+.steps{margin:0;padding-left:22px;color:#cfe2f9;font-size:15px;line-height:1.7}
+.steps li{margin-bottom:12px}
+.steps li b{color:#fff}
+
+/* ABOUT */
+.about{border-radius:24px;padding:24px}
+.about-grid{display:grid;gap:20px}
+@media(min-width:820px){.about-grid{grid-template-columns:.9fr 1.1fr}}
+.avatar{height:100%;min-height:220px;border-radius:18px;background:
+  radial-gradient(300px 200px at 30% 20%, rgba(255,210,31,.20), transparent 60%),
+  linear-gradient(160deg, rgba(90,150,235,.40), rgba(6,12,26,.65));
+  border:1px solid rgba(170,205,255,.24);display:grid;place-items:center;text-align:center;padding:24px}
+.avatar .big{font-size:52px;line-height:1}
+.avatar b{color:#fff;display:block;margin-top:10px;font-size:18px}
+.avatar span{color:#b3cbe9;font-size:13.5px}
+.about p{color:#c3d9f6;line-height:1.7;margin:0 0 12px;font-size:15.5px}
+.about p strong{color:#fff}
+
+/* FOOTER */
+footer{max-width:1120px;margin:0 auto;padding:28px 16px 36px;color:#87a5c9;font-size:12.5px;line-height:1.7;text-align:center}
+footer .flogo{font-weight:900;letter-spacing:.14em;color:#dcecfc;font-size:15px}
+footer .flogo em{font-style:normal;color:#ffd21f}
+footer nav{display:flex;flex-wrap:wrap;gap:6px 16px;justify-content:center;margin:12px 0}
+footer nav a{color:#b3cbe9;text-decoration:none;font-weight:600;font-size:13px}
+footer nav a:hover{color:#fff;text-decoration:underline}
+footer .disc{max-width:52em;margin:10px auto 0;border-top:1px solid rgba(170,205,255,.16);padding-top:14px}
+
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="topnav">
+  <div class="nav-inner">
+    <a class="logo" href="index.html">PROJECT <em>BUDDY</em><small>Trade tools &amp; services</small></a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="apps.html" class="active">The Apps</a>
+      <a href="estimating.html">Estimating</a>
+      <a href="packages.html">Plan Packages</a>
+      <a href="gear.html">Gear</a>
+      <a href="diy.html">DIY Corner</a>
+      <a href="apps.html#family" class="nav-cta">The Package</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button>
+  </div>
+  <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile">
+    <a href="index.html">Home</a>
+    <a href="apps.html">The Apps</a>
+    <a href="estimating.html">Estimating &amp; Drafting</a>
+    <a href="packages.html">Plan Packages</a>
+    <a href="gear.html">Gear Store</a>
+    <a href="diy.html">DIY Corner</a>
+    <a href="index.html#about">About Dave</a>
+    <a href="apps.html#family">The Package</a>
+  </nav>
+</header>
+
+<main class="wrap" id="top">
+
+  <section aria-label="The Buddy apps">
+    <div class="section-head">
+      <div class="kicker">The Apps</div>
+      <h2>Meet the Buddies</h2>
+      <p>One screen per trade. Same glassy look, same feet-inch-fraction brain, numbers that flow from one Buddy to the next. Every single below is a <b style="color:#eaf3ff">full trade calculator</b> — the depth of a professional construction calculator, aimed at one trade — never a cut-down form.</p>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px" aria-label="Jump to a Buddy">
+        <a class="pill" href="apps.html#framer">Framer Buddy</a>
+        <a class="pill" href="apps.html#roofer">Roofer Buddy</a>
+        <a class="pill" href="apps.html#concrete">Concrete Buddy</a>
+        <a class="pill" href="apps.html#foundation">Foundation Buddy</a>
+        <a class="pill" href="apps.html#siding">Siding Buddy</a>
+        <a class="pill" href="apps.html#drywall">Drywall Buddy</a>
+        <a class="pill" href="apps.html#paint">Paint Buddy</a>
+        <a class="pill" href="apps.html#finishing">Finishing Buddy</a>
+        <a class="pill" href="apps.html#punch-clock">Punch Clock Buddy</a>
+    </div>
+    <div class="two-grid">
+      <article class="card glass" id="framer">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:10px"><div class="big-icon" style="margin:0">🪟</div><span class="badge badge-ready">Built</span></div>
+        <h3>Framer Buddy</h3>
+        <p><b style="color:#eaf3ff">The full framing calculator — pitch, rise, run, stairs, area, volume &amp; board feet in feet-inch-fraction.</b></p>
+        <p>The one that started it all, modeled on the calculator every contractor already knows — then taken further. It works the way your hands expect: type a number, tell it feet, inches or a fraction, and it stays in feet-inch-fraction for you.</p>
+        <ul><li>Pitch / Rise / Run / Diag triangle solving</li><li>Stair cycle at a 7½″ max riser</li><li>Length × Width × Height — area, volume (ft³/yd³), board feet</li><li>Circle calcs, %, √, x², Store / Rcl / M+</li><li>Yellow Conv key: yards, metres, cm, mm, decimal feet</li><li>Fraction resolution 1/2 through 1/64</li></ul>
+        <p class="status">Built and tested — a full trade calculator.</p>
+      </article>
+      <article class="card glass" id="roofer">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:10px"><div class="big-icon" style="margin:0">🏠</div><span class="badge badge-ready">Built</span></div>
+        <h3>Roofer Buddy</h3>
+        <p><b style="color:#eaf3ff">Pitches, rafter lengths, bundles, hips &amp; valleys — roofing math without the guesswork.</b></p>
+        <p>Roofing quantities and cuts from the same triangle brain as Framer Buddy, aimed at the roof: pitch to rafter, area to bundles, with waste figured the way roofers actually order. Shingles, ice &amp; water shield and metal roofing totals, all three systems side by side.</p>
+        <ul><li>Pitch key: /12, degrees, slope % and slope factor</li><li>Common, hip and jack rafters — overhang tail and ridge deduction shown separately</li><li>Roof totals: squares, bundles, underlayment rolls, ridge cap, drip edge</li><li>Ice &amp; water shield: eave courses and valleys, in 66 ft rolls</li><li>Metal roofing: panel counts at 36″ or 16″ coverage, screws, closures, ridge</li><li>Adjustable waste, 10% to start</li></ul>
+        <p class="status">Built and tested — a full trade calculator.</p>
+      </article>
+      <article class="card glass" id="concrete">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:10px"><div class="big-icon" style="margin:0">⬛</div><span class="badge badge-ready">Built</span></div>
+        <h3>Concrete Buddy</h3>
+        <p><b style="color:#eaf3ff">Slabs, footings and walls — volume, bags, rebar and mesh in one place.</b></p>
+        <p>Yards for the truck, bags for the small jobs, and the gravel base under both. Built for pads, footings, walls and tubes — volume with waste figured in, and an order sheet that rounds up the way the yard does.</p>
+        <ul><li>Slab, footing, wall and tube volumes (ft³ / yd³ / m³)</li><li>Gravel base volume, figured separately</li><li>Bag counts for small pours — 30 kg, 80 lb and 60 lb, rounded up</li><li>Adjustable waste, 5% to start</li><li>Totals order sheet: every pour listed, grand total, order quantity rounded up to the nearest ½ m³</li><li>Results stored on the job, on your device</li></ul>
+        <p class="status">Built and tested — a full trade calculator.</p>
+      </article>
+      <article class="card glass" id="foundation">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:10px"><div class="big-icon" style="margin:0">🧱</div><span class="badge badge-works">In the works</span></div>
+        <h3>Foundation Buddy</h3>
+        <p><b style="color:#eaf3ff">Footings, foundation walls, excavation and backfill — the hole-to-cap numbers.</b></p>
+        <p>Everything below grade in one screen: footing sizes, wall concrete, excavation and backfill volumes, and insulation where the site calls for it.</p>
+        <ul><li>Footing &amp; foundation wall volumes</li><li>Excavation &amp; backfill (bank vs loose)</li><li>Perimeter insulation — vertical &amp; wing (when required)</li></ul>
+        <p class="status plain">In the works — being built to the same standard, one Buddy at a time.</p>
+      </article>
+      <article class="card glass" id="siding">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:10px"><div class="big-icon" style="margin:0">▦</div><span class="badge badge-works">In the works</span></div>
+        <h3>Siding Buddy</h3>
+        <p><b style="color:#eaf3ff">Vinyl, board and panel siding — squares, trim, soffit &amp; fascia, figured tight.</b></p>
+        <p>Wall area minus openings, done honestly: squares, starter, J-channel, corners, soffit and fascia — so the order is right the first time.</p>
+        <ul><li>Net wall area &amp; squares</li><li>Trim, starter &amp; channel lengths</li><li>Soffit &amp; fascia quantities</li><li>Gable calculations</li></ul>
+        <p class="status plain">In the works — being built to the same standard, one Buddy at a time.</p>
+      </article>
+      <article class="card glass" id="drywall">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:10px"><div class="big-icon" style="margin:0">⬜</div><span class="badge badge-works">In the works</span></div>
+        <h3>Drywall Buddy</h3>
+        <p><b style="color:#eaf3ff">Boards, mud, tape, bead and screws — a full room or a full house.</b></p>
+        <p>Sheet counts that respect board sizes and ceiling heights, plus the finishing that always gets forgotten: compound, tape, corner bead and fasteners as counted lines.</p>
+        <ul><li>Sheet counts by board size</li><li>Joint compound, tape &amp; corner bead</li><li>Screw &amp; fastener counts</li><li>Waste figured per surface</li></ul>
+        <p class="status plain">In the works — being built to the same standard, one Buddy at a time.</p>
+      </article>
+      <article class="card glass" id="paint">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:10px"><div class="big-icon" style="margin:0">🎨</div><span class="badge badge-works">In the works</span></div>
+        <h3>Paint Buddy</h3>
+        <p><b style="color:#eaf3ff">Coverage, coats and gallons — walls, ceilings and trim, primer included.</b></p>
+        <p>Real coverage rates, not label promises: gallons by surface and coats, primer separated from finish, trim broken out from walls.</p>
+        <ul><li>Wall, ceiling &amp; trim coverage</li><li>Primer vs finish coats</li><li>Gallons / litres by product coverage</li></ul>
+        <p class="status plain">In the works — being built to the same standard, one Buddy at a time.</p>
+      </article>
+      <article class="card glass" id="finishing">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:10px"><div class="big-icon" style="margin:0">🚪</div><span class="badge badge-works">In the works</span></div>
+        <h3>Finishing Buddy</h3>
+        <p><b style="color:#eaf3ff">Baseboard, casing, doors and flooring — mitres, waste and counts that add up.</b></p>
+        <p>The last 10% that eats 30% of the arguments: trim linear feet with waste, door counts and handing, flooring area with the right overage per product.</p>
+        <ul><li>Baseboard &amp; casing linear feet</li><li>Door counts, sizes &amp; handing</li><li>Flooring area + product waste rates</li></ul>
+        <p class="status plain">In the works — being built to the same standard, one Buddy at a time.</p>
+      </article>
+      <article class="card glass" id="punch-clock">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:10px"><div class="big-icon" style="margin:0">⏱️</div><span class="badge badge-works">In the works</span></div>
+        <h3>Punch Clock Buddy</h3>
+        <p><b style="color:#eaf3ff">One-tap in &amp; out, hours tied to jobs — daily, weekly and monthly views, with reports.</b></p>
+        <p>Modeled on the simple tracker working crews already like — one tap in, one tap out — but the hours live with the calculators and job reports instead of in a separate app. Also sold on its own.</p>
+        <ul><li>One-tap check in / out, assigned to jobs &amp; tasks</li><li>Per-job / per-client rates, paid overtime</li><li>Daily notes; day / week / month overviews</li><li>Reports exported as Excel / PDF</li><li>Location-stamps punches &amp; photos (never sold as measurement)</li></ul>
+        <p class="status plain">In the works — being built to the same standard, one Buddy at a time.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="browser" aria-label="Built-in supplier browser">
+    <div class="banner glass">
+      <div>
+        <div class="kicker">Built into every single</div>
+        <h3>🌐 A supplier browser in every Buddy</h3>
+        <p>Every single carries a built-in browser for looking things up without leaving the job — store product pages, today&rsquo;s prices, code and span references. It is <b style="color:#eaf3ff">location-based</b>: set your town once, and the searches and supplier links come up local to you — your stores, your prices. A guy in Calgary gets Calgary results, not Thunder Bay ones. The calculators themselves work fully offline; the browser just uses your data connection when you have one.</p>
+      </div>
+      <div class="banner-side">
+        <a class="btn btn-yellow" href="apps.html#pricing">See the pricing →</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing" aria-label="App pricing">
+    <div class="section-head">
+      <div class="kicker">Pricing</div>
+      <h2>Pay once. It&rsquo;s yours.</h2>
+      <p>Buy just the trade you need today. When the family package lands, the singles you already own count toward it with a promo code — you never pay twice for the same Buddy. No rent, no auto-renew, no subscription, ever.</p>
+    </div>
+    <div class="price-note glass">
+      <div><strong>Singles now, package when it lands.</strong><span>Ordering opens with the first releases — payment is by PayPal or Interac e-Transfer.</span></div>
+      <div class="price-boxes">
+        <div class="price-box"><b>~$25</b><span>Each Buddy, one-time</span></div>
+        <div class="price-box"><b>$99–129</b><span>Complete package, one-time</span></div>
+      </div>
+    </div>
+    <p style="margin-top:14px"><a class="more" href="estimating.html#ordering">How ordering &amp; payment works →</a></p>
+  </section>
+
+  <section id="family" aria-label="The family app">
+    <div class="section-head">
+      <div class="kicker">Coming later</div>
+      <h2>The family app — all of them, plus AI</h2>
+      <p>The flagship package is in the works: all nine Buddies in one app, with the bells and whistles — and the one place the Buddy AI lives.</p>
+    </div>
+    <div class="card glass">
+      <h3>🤖 An AI for every trade — only in the package</h3>
+      <p>Each Buddy in the family app gets its own AI assistant, fenced to that trade only: the Framer&rsquo;s AI talks framing, the Concrete AI talks concrete, and each one says &ldquo;that&rsquo;s not my job&rdquo; to anything outside it. It looks up codes, weather, calculations and material prices — and shows its sources, so you can check it in seconds.</p>
+      <ul>
+        <li>A starter tank of questions is included with the package</li>
+        <li>Then pay as you go — question packs, bought only if you want more</li>
+        <li>Nothing auto-renews, and the calculators and punch clock never lock</li>
+        <li>AI answers are guidance and flags only — your local code book stays the judge</li>
+      </ul>
+      <p class="status plain">In the works — being finished after the singles, when it can be done properly. The singles above are how you get working today.</p>
+      <div class="price-boxes">
+        <div class="price-box"><b>$99–129</b><span>Family package, one-time</span></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="flogo">PROJECT <em>BUDDY</em></div>
+  <div>Built by a tradesman, for tradesmen. • Thunder Bay, Ontario, Canada</div>
+  <nav aria-label="Footer">
+    <a href="index.html">Home</a>
+    <a href="apps.html">The Apps</a>
+    <a href="estimating.html">Estimating &amp; Drafting</a>
+    <a href="packages.html">Plan Packages</a>
+    <a href="gear.html">Gear Store</a>
+    <a href="diy.html">DIY Corner</a>
+    <a href="index.html#about">About Dave</a>
+  </nav>
+  <div>The Buddy apps are sold as one-time purchases — never a subscription. The calculators work offline; the built-in browser and other online features use your data connection when you have one.</div>
+  <div class="disc"><strong style="color:#b3cbe9">Affiliate disclosure:</strong> Some links on this site — in the Gear Store and in plan-package tool lists — may be affiliate links. If you buy through one, Project Buddy may earn a small commission from the retailer at no extra cost to you. No affiliate links are active on this site today.</div>
+  <div style="margin-top:12px">© 2026 Project Buddy</div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var menuBtn=document.getElementById('menuBtn');
+  var mobileMenu=document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click',function(){
+    var open=mobileMenu.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', open?'true':'false');
+    menuBtn.textContent=open?'✕':'☰';
+  });
+  mobileMenu.addEventListener('click',function(e){
+    if(e.target.tagName==='A'){ mobileMenu.classList.remove('open'); menuBtn.textContent='☰'; menuBtn.setAttribute('aria-expanded','false'); }
+  });
+})();
+</script>
+</body>
+</html>
