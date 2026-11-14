@@ -203,17 +203,22 @@ footer .disc{max-width:52em;margin:10px auto 0;border-top:1px solid rgba(170,205
 <!-- PB-UNDER-CONSTRUCTION-OVERLAY:STYLE -->
 <style>
 .pb-uc{position:fixed;z-index:99990;pointer-events:none;line-height:1;}
-.pb-uc-bannerwrap{top:8px;left:0;right:0;display:flex;justify-content:center;}
-.pb-uc-banner{background:#f2b705;color:#0f2238;font-family:inherit;font-weight:800;font-size:14px;letter-spacing:.06em;padding:7px 16px;border-radius:5px;box-shadow:0 2px 8px rgba(0,0,0,.35);white-space:nowrap;animation:pbucwave 2.8s ease-in-out infinite alternate;}
-@keyframes pbucwave{from{transform:rotate(-1.4deg) skewX(2.5deg);}to{transform:rotate(1.4deg) skewX(-2.5deg);}}
-.pb-uc-hammer{right:16px;bottom:84px;font-size:36px;transform-origin:20% 85%;animation:pbucswing 1.2s ease-in-out infinite;}
-@keyframes pbucswing{0%{transform:rotate(0deg);}35%{transform:rotate(-30deg);}60%{transform:rotate(8deg);}100%{transform:rotate(0deg);}}
-.pb-uc-saw{right:70px;bottom:26px;font-size:34px;animation:pbucut .9s ease-in-out infinite alternate;}
-@keyframes pbucut{from{transform:translateX(0);}to{transform:translateX(-13px);}}
-.pb-uc-hat{font-size:30px;transition-property:left,top;transition-timing-function:ease-in-out;}
+.pb-uc-move{transition-property:left,top;transition-timing-function:ease-in-out;}
+.pb-uc-top{z-index:99995;}
+.pb-uc-banner{display:inline-flex;align-items:center;gap:.35em;background:#f2b705;color:#0f2238;font-family:inherit;font-weight:900;font-size:clamp(22px,6.2vw,60px);letter-spacing:.02em;text-align:center;line-height:1.08;padding:.26em .45em;border:3px solid #0f2238;border-radius:10px;box-shadow:0 6px 22px rgba(0,0,0,.45);animation:pbucwave 2.8s ease-in-out infinite alternate;}
+@keyframes pbucwave{from{transform:rotate(-1.6deg) skewX(2.2deg);}to{transform:rotate(1.6deg) skewX(-2.2deg);}}
+.pb-uc-hammer{font-size:118px;filter:drop-shadow(0 5px 7px rgba(0,0,0,.45));}
+.pb-uc-swing{display:inline-block;transform-origin:20% 85%;animation:pbucswing 1.2s ease-in-out infinite;}
+@keyframes pbucswing{0%{transform:rotate(0deg);}35%{transform:rotate(-28deg);}60%{transform:rotate(8deg);}100%{transform:rotate(0deg);}}
+.pb-uc-saw{font-size:118px;filter:drop-shadow(0 5px 7px rgba(0,0,0,.45));}
+.pb-uc-cut{display:inline-block;animation:pbucut .9s ease-in-out infinite alternate;}
+@keyframes pbucut{from{transform:translateX(10px);}to{transform:translateX(-10px);}}
+.pb-uc-hat svg{display:block;filter:drop-shadow(0 5px 7px rgba(0,0,0,.4));}
+.pb-uc-bob{animation:pbucbob 3.4s ease-in-out infinite;}
+@keyframes pbucbob{0%,100%{transform:translateY(0) rotate(-3deg);}50%{transform:translateY(-9px) rotate(3deg);}}
 @media (prefers-reduced-motion: reduce){
-.pb-uc-banner,.pb-uc-hammer,.pb-uc-saw{animation:none !important;}
-.pb-uc-hat{transition:none !important;}
+.pb-uc-banner,.pb-uc-swing,.pb-uc-cut,.pb-uc-bob{animation:none !important;}
+.pb-uc-move{transition:none !important;}
 }
 </style>
 <!-- PB-UNDER-CONSTRUCTION-OVERLAY:STYLE:END -->
@@ -328,35 +333,57 @@ footer .disc{max-width:52em;margin:10px auto 0;border-top:1px solid rgba(170,205
 })();
 </script>
 <!-- PB-UNDER-CONSTRUCTION-OVERLAY:BODY -->
-<div class="pb-uc pb-uc-bannerwrap" aria-hidden="true"><div class="pb-uc-banner">&#128679; UNDER CONSTRUCTION &#128679;</div></div>
-<div class="pb-uc pb-uc-hammer" aria-hidden="true">&#128296;</div>
-<div class="pb-uc pb-uc-saw" aria-hidden="true">&#129690;</div>
-<div class="pb-uc pb-uc-hat" id="pbuc-hat1" style="left:10px;top:110px;" aria-hidden="true">&#9937;</div>
-<div class="pb-uc pb-uc-hat" id="pbuc-hat2" style="right:12px;top:180px;left:auto;" aria-hidden="true">&#9937;</div>
-<div class="pb-uc pb-uc-hat" id="pbuc-hat3" style="left:14px;bottom:150px;top:auto;" aria-hidden="true">&#9937;</div>
+<div class="pb-uc pb-uc-move pb-uc-top" style="left:12px;top:12px;" aria-hidden="true"><div class="pb-uc-banner"><span>&#128679;</span><span>UNDER<br>CONSTRUCTION</span><span>&#128679;</span></div></div>
+<div class="pb-uc pb-uc-move pb-uc-hammer" style="left:12px;top:300px;" aria-hidden="true"><span class="pb-uc-swing">&#128296;</span></div>
+<div class="pb-uc pb-uc-move pb-uc-saw" style="left:180px;top:420px;" aria-hidden="true"><span class="pb-uc-cut">&#129690;</span></div>
+<div class="pb-uc pb-uc-move pb-uc-hat" style="left:20px;top:130px;" aria-hidden="true"><div class="pb-uc-bob"><svg width="110" height="81" viewBox="0 0 120 88" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Yellow hard hat"><defs><linearGradient id="pbucHatG1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe066"/><stop offset=".55" stop-color="#ffc61a"/><stop offset="1" stop-color="#f0a500"/></linearGradient></defs><path d="M18 72 C18 40 36 20 60 20 C84 20 102 40 102 72 Z" fill="url(#pbucHatG1)" stroke="rgba(160,100,0,.35)" stroke-width="1"/><path d="M49 22 C49 13 54 8 60 8 C66 8 71 13 71 22 L72 72 L48 72 Z" fill="#ffdf6b"/><ellipse cx="37" cy="42" rx="8" ry="14" fill="#ffffff" opacity=".3" transform="rotate(-16 37 42)"/><path d="M4 72 L116 72 C116 79.5 98 84 60 84 C22 84 4 79.5 4 72 Z" fill="#f7bd00" stroke="rgba(160,100,0,.3)" stroke-width="1"/><path d="M4 72 L116 72 C116 75.5 105 78.8 86 80.6 L34 80.6 C15 78.8 4 75.5 4 72 Z" fill="#cf8f00" opacity=".5"/></svg></div></div>
+<div class="pb-uc pb-uc-move pb-uc-hat" style="left:220px;top:180px;" aria-hidden="true"><div class="pb-uc-bob" style="animation-delay:-1.6s"><svg width="110" height="81" viewBox="0 0 120 88" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Yellow hard hat"><defs><linearGradient id="pbucHatG2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe066"/><stop offset=".55" stop-color="#ffc61a"/><stop offset="1" stop-color="#f0a500"/></linearGradient></defs><path d="M18 72 C18 40 36 20 60 20 C84 20 102 40 102 72 Z" fill="url(#pbucHatG2)" stroke="rgba(160,100,0,.35)" stroke-width="1"/><path d="M49 22 C49 13 54 8 60 8 C66 8 71 13 71 22 L72 72 L48 72 Z" fill="#ffdf6b"/><ellipse cx="37" cy="42" rx="8" ry="14" fill="#ffffff" opacity=".3" transform="rotate(-16 37 42)"/><path d="M4 72 L116 72 C116 79.5 98 84 60 84 C22 84 4 79.5 4 72 Z" fill="#f7bd00" stroke="rgba(160,100,0,.3)" stroke-width="1"/><path d="M4 72 L116 72 C116 75.5 105 78.8 86 80.6 L34 80.6 C15 78.8 4 75.5 4 72 Z" fill="#cf8f00" opacity=".5"/></svg></div></div>
+<div class="pb-uc pb-uc-move pb-uc-hat" style="left:60px;top:520px;" aria-hidden="true"><div class="pb-uc-bob" style="animation-delay:-2.9s"><svg width="110" height="81" viewBox="0 0 120 88" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Yellow hard hat"><defs><linearGradient id="pbucHatG3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe066"/><stop offset=".55" stop-color="#ffc61a"/><stop offset="1" stop-color="#f0a500"/></linearGradient></defs><path d="M18 72 C18 40 36 20 60 20 C84 20 102 40 102 72 Z" fill="url(#pbucHatG3)" stroke="rgba(160,100,0,.35)" stroke-width="1"/><path d="M49 22 C49 13 54 8 60 8 C66 8 71 13 71 22 L72 72 L48 72 Z" fill="#ffdf6b"/><ellipse cx="37" cy="42" rx="8" ry="14" fill="#ffffff" opacity=".3" transform="rotate(-16 37 42)"/><path d="M4 72 L116 72 C116 79.5 98 84 60 84 C22 84 4 79.5 4 72 Z" fill="#f7bd00" stroke="rgba(160,100,0,.3)" stroke-width="1"/><path d="M4 72 L116 72 C116 75.5 105 78.8 86 80.6 L34 80.6 C15 78.8 4 75.5 4 72 Z" fill="#cf8f00" opacity=".5"/></svg></div></div>
 <script>
 (function(){
-  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var hats = [document.getElementById('pbuc-hat1'), document.getElementById('pbuc-hat2'), document.getElementById('pbuc-hat3')];
-  function waypoint(){
-    var w = window.innerWidth, h = window.innerHeight, m = 56;
-    var edge = Math.floor(Math.random()*4), x, y;
-    if (edge === 0){ x = 8 + Math.random()*(w-m-8); y = 64 + Math.random()*40; }        // near top (below banner)
-    else if (edge === 1){ x = 8 + Math.random()*(w-m-8); y = h - m - 8 - Math.random()*40; } // near bottom
-    else if (edge === 2){ x = 8 + Math.random()*24; y = 70 + Math.random()*(h-m-140); }  // near left
-    else { x = w - m - 8 - Math.random()*24; y = 70 + Math.random()*(h-m-140); }          // near right
-    return {x:x, y:y};
+  var els = Array.prototype.slice.call(document.querySelectorAll('.pb-uc-move'));
+  if (!els.length) return;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var PAD = 26; // absorbs swing/cut/wave transform excursions so nothing clips an edge
+  function range(el){
+    var ew = el.offsetWidth, eh = el.offsetHeight;
+    var padX = Math.max(2, Math.min(PAD, (window.innerWidth - ew) / 2));
+    var padY = Math.max(2, Math.min(PAD, (window.innerHeight - eh) / 2));
+    return { minX: padX, minY: padY,
+             maxX: Math.max(padX, window.innerWidth - ew - padX),
+             maxY: Math.max(padY, window.innerHeight - eh - padY) };
   }
+  function place(el, x, y){ el.style.left = x + 'px'; el.style.top = y + 'px'; }
+  // distinct starting zones (fractions of the available range), in DOM order:
+  // banner, hammer, saw, hat1, hat2, hat3
+  var zones = [ {fx:.5,fy:.03}, {fx:.06,fy:.45}, {fx:.88,fy:.5}, {fx:.18,fy:.78}, {fx:.72,fy:.16}, {fx:.38,fy:.6} ];
+  els.forEach(function(el, i){
+    var r = range(el), z = zones[i % zones.length];
+    place(el, r.minX + z.fx * (r.maxX - r.minX), r.minY + z.fy * (r.maxY - r.minY));
+  });
+  if (reduce) return; // stationary but visible, positioned fully on-screen above
   function drift(el){
-    if (!el) return;
-    var d = 6000 + Math.random()*6000;
-    var p = waypoint();
-    el.style.right = 'auto'; el.style.bottom = 'auto';
+    var r = range(el);
+    var x = r.minX + Math.random() * (r.maxX - r.minX);
+    var y = r.minY + Math.random() * (r.maxY - r.minY);
+    var d = 6000 + Math.random() * 6000;
     el.style.transitionDuration = d + 'ms';
-    el.style.left = p.x + 'px'; el.style.top = p.y + 'px';
-    setTimeout(function(){ drift(el); }, d + 300);
+    place(el, x, y);
+    setTimeout(function(){ drift(el); }, d + 250);
   }
-  hats.forEach(function(el, i){ setTimeout(function(){ drift(el); }, i*1800); });
+  els.forEach(function(el, i){ setTimeout(function(){ drift(el); }, 500 + i * 900); });
+  var rzT;
+  window.addEventListener('resize', function(){
+    clearTimeout(rzT);
+    rzT = setTimeout(function(){
+      els.forEach(function(el){
+        var r = range(el);
+        var x = parseFloat(el.style.left) || r.minX, y = parseFloat(el.style.top) || r.minY;
+        el.style.transitionDuration = '0ms';
+        place(el, Math.min(Math.max(x, r.minX), r.maxX), Math.min(Math.max(y, r.minY), r.maxY));
+      });
+    }, 150);
+  });
 })();
 </script>
 <!-- PB-UNDER-CONSTRUCTION-OVERLAY:BODY:END -->
