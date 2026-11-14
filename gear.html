@@ -200,6 +200,23 @@ footer .disc{max-width:52em;margin:10px auto 0;border-top:1px solid rgba(170,205
   .sidenav a.active{background:rgba(242,183,5,.16);color:#ffd94d;box-shadow:inset 3px 0 0 #f2b705}
 }
 </style>
+<!-- PB-UNDER-CONSTRUCTION-OVERLAY:STYLE -->
+<style>
+.pb-uc{position:fixed;z-index:99990;pointer-events:none;line-height:1;}
+.pb-uc-bannerwrap{top:8px;left:0;right:0;display:flex;justify-content:center;}
+.pb-uc-banner{background:#f2b705;color:#0f2238;font-family:inherit;font-weight:800;font-size:14px;letter-spacing:.06em;padding:7px 16px;border-radius:5px;box-shadow:0 2px 8px rgba(0,0,0,.35);white-space:nowrap;animation:pbucwave 2.8s ease-in-out infinite alternate;}
+@keyframes pbucwave{from{transform:rotate(-1.4deg) skewX(2.5deg);}to{transform:rotate(1.4deg) skewX(-2.5deg);}}
+.pb-uc-hammer{right:16px;bottom:84px;font-size:36px;transform-origin:20% 85%;animation:pbucswing 1.2s ease-in-out infinite;}
+@keyframes pbucswing{0%{transform:rotate(0deg);}35%{transform:rotate(-30deg);}60%{transform:rotate(8deg);}100%{transform:rotate(0deg);}}
+.pb-uc-saw{right:70px;bottom:26px;font-size:34px;animation:pbucut .9s ease-in-out infinite alternate;}
+@keyframes pbucut{from{transform:translateX(0);}to{transform:translateX(-13px);}}
+.pb-uc-hat{font-size:30px;transition-property:left,top;transition-timing-function:ease-in-out;}
+@media (prefers-reduced-motion: reduce){
+.pb-uc-banner,.pb-uc-hammer,.pb-uc-saw{animation:none !important;}
+.pb-uc-hat{transition:none !important;}
+}
+</style>
+<!-- PB-UNDER-CONSTRUCTION-OVERLAY:STYLE:END -->
 </head>
 <body>
 <aside class="sidenav" aria-label="Site">
@@ -310,5 +327,38 @@ footer .disc{max-width:52em;margin:10px auto 0;border-top:1px solid rgba(170,205
   });
 })();
 </script>
+<!-- PB-UNDER-CONSTRUCTION-OVERLAY:BODY -->
+<div class="pb-uc pb-uc-bannerwrap" aria-hidden="true"><div class="pb-uc-banner">&#128679; UNDER CONSTRUCTION &#128679;</div></div>
+<div class="pb-uc pb-uc-hammer" aria-hidden="true">&#128296;</div>
+<div class="pb-uc pb-uc-saw" aria-hidden="true">&#129690;</div>
+<div class="pb-uc pb-uc-hat" id="pbuc-hat1" style="left:10px;top:110px;" aria-hidden="true">&#9937;</div>
+<div class="pb-uc pb-uc-hat" id="pbuc-hat2" style="right:12px;top:180px;left:auto;" aria-hidden="true">&#9937;</div>
+<div class="pb-uc pb-uc-hat" id="pbuc-hat3" style="left:14px;bottom:150px;top:auto;" aria-hidden="true">&#9937;</div>
+<script>
+(function(){
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var hats = [document.getElementById('pbuc-hat1'), document.getElementById('pbuc-hat2'), document.getElementById('pbuc-hat3')];
+  function waypoint(){
+    var w = window.innerWidth, h = window.innerHeight, m = 56;
+    var edge = Math.floor(Math.random()*4), x, y;
+    if (edge === 0){ x = 8 + Math.random()*(w-m-8); y = 64 + Math.random()*40; }        // near top (below banner)
+    else if (edge === 1){ x = 8 + Math.random()*(w-m-8); y = h - m - 8 - Math.random()*40; } // near bottom
+    else if (edge === 2){ x = 8 + Math.random()*24; y = 70 + Math.random()*(h-m-140); }  // near left
+    else { x = w - m - 8 - Math.random()*24; y = 70 + Math.random()*(h-m-140); }          // near right
+    return {x:x, y:y};
+  }
+  function drift(el){
+    if (!el) return;
+    var d = 6000 + Math.random()*6000;
+    var p = waypoint();
+    el.style.right = 'auto'; el.style.bottom = 'auto';
+    el.style.transitionDuration = d + 'ms';
+    el.style.left = p.x + 'px'; el.style.top = p.y + 'px';
+    setTimeout(function(){ drift(el); }, d + 300);
+  }
+  hats.forEach(function(el, i){ setTimeout(function(){ drift(el); }, i*1800); });
+})();
+</script>
+<!-- PB-UNDER-CONSTRUCTION-OVERLAY:BODY:END -->
 </body>
 </html>
