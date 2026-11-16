@@ -452,38 +452,39 @@
 
           <button class="key k-fn" data-act="pad" type="button"><small>Outrigger pad</small><span class="lab">Pad</span></button>
           <button class="key k-fn" data-act="cg" type="button"><small>Two-point pick</small><span class="lab">CG</span></button>
+          <button class="key k-fn" data-act="fork" type="button"><small>Load centre</small><span class="lab">Fork</span></button>
           <button class="key k-unit" data-act="legs" type="button"><small>Legs</small><span class="lab" id="legsLab">2</span></button>
           <button class="key k-unit" data-act="hitch" type="button"><small>Hitch</small><span class="lab" id="hitchLab">Vert</span></button>
-          <button class="key k-op" data-act="opdiv" type="button" aria-label="Divide"><small>&nbsp;</small><span class="lab">÷</span></button>
 
           <button class="key k-unit" data-act="ua90" type="button"><small>Sling angle</small><span class="lab">90°</span></button>
           <button class="key k-unit" data-act="ua60" type="button"><small>Sling angle</small><span class="lab">60°</span></button>
           <button class="key k-unit" data-act="ua45" type="button"><small>Sling angle</small><span class="lab">45°</span></button>
           <button class="key k-unit" data-act="ua30" type="button"><small>Sling angle</small><span class="lab">30°</span></button>
-          <button class="key k-op" data-act="opmul" type="button" aria-label="Multiply"><small>&nbsp;</small><span class="lab">×</span></button>
+          <button class="key k-op" data-act="opdiv" type="button" aria-label="Divide"><small>&nbsp;</small><span class="lab">÷</span></button>
 
           <button class="key k-conv" data-act="conv" type="button" id="convKey"><small>Convert</small><span class="lab">Conv</span></button>
           <button class="key k-fn" data-act="store" type="button"><small>Keep result</small><span class="lab">Store</span></button>
           <button class="key k-fn" data-act="mem" type="button"><small>Memory</small><span class="lab">Mem</span></button>
           <button class="key k-fn" data-act="rcl" type="button"><small>Memory</small><span class="lab">Rcl</span></button>
-          <button class="key k-op" data-act="opsub" type="button" aria-label="Subtract"><small>&nbsp;</small><span class="lab">−</span></button>
+          <button class="key k-op" data-act="opmul" type="button" aria-label="Multiply"><small>&nbsp;</small><span class="lab">×</span></button>
 
           <button class="key k-num" data-act="d7" type="button"><small>&nbsp;</small><span class="lab">7</span></button>
           <button class="key k-num" data-act="d8" type="button"><small>&nbsp;</small><span class="lab">8</span></button>
           <button class="key k-num" data-act="d9" type="button"><small>&nbsp;</small><span class="lab">9</span></button>
           <button class="key" data-act="neg" type="button"><small>&nbsp;</small><span class="lab">+/−</span></button>
-          <button class="key k-op" data-act="opadd" type="button" aria-label="Add"><small>&nbsp;</small><span class="lab">+</span></button>
+          <button class="key k-op" data-act="opsub" type="button" aria-label="Subtract"><small>&nbsp;</small><span class="lab">−</span></button>
 
           <button class="key k-num" data-act="d4" type="button"><small>&nbsp;</small><span class="lab">4</span></button>
           <button class="key k-num" data-act="d5" type="button"><small>&nbsp;</small><span class="lab">5</span></button>
           <button class="key k-num" data-act="d6" type="button"><small>&nbsp;</small><span class="lab">6</span></button>
           <button class="key k-num" data-act="dot" type="button"><small>&nbsp;</small><span class="lab">.</span></button>
-          <button class="key k-op k-eq" data-act="eq" type="button" aria-label="Equals" style="grid-row: span 2;"><small>&nbsp;</small><span class="lab">=</span></button>
+          <button class="key k-op" data-act="opadd" type="button" aria-label="Add"><small>&nbsp;</small><span class="lab">+</span></button>
 
           <button class="key k-num" data-act="d1" type="button"><small>&nbsp;</small><span class="lab">1</span></button>
           <button class="key k-num" data-act="d2" type="button"><small>&nbsp;</small><span class="lab">2</span></button>
           <button class="key k-num" data-act="d3" type="button"><small>&nbsp;</small><span class="lab">3</span></button>
           <button class="key k-num" data-act="d0" type="button"><small>&nbsp;</small><span class="lab">0</span></button>
+          <button class="key k-op k-eq" data-act="eq" type="button" aria-label="Equals"><small>&nbsp;</small><span class="lab">=</span></button>
         </div>
 
       </section>
@@ -747,13 +748,55 @@
       </div>
     </div>
 
+    <!-- ================= FORKLIFT LOAD CENTRE ================= -->
+    <div class="help-overlay" id="forkOverlay" hidden role="dialog" aria-modal="true" aria-label="Forklift load centre derating calculator">
+      <div class="help-panel">
+        <div class="help-head"><h2>Fork — load centre</h2><button class="help-close" id="forkClose" type="button">Close ✕</button></div>
+        <p class="calc-what">A forklift's <b>rated capacity only holds at its rated load centre</b> — the farther the load's centre sits out the forks, the less it can honestly lift. Tell it what the data plate says, and where your load's centre really sits.</p>
+        <div class="fld">
+          <label class="sheet-label" for="forkRated">Rated capacity from the data plate (lb)</label>
+          <input class="sheet-input" id="forkRated" type="text" inputmode="decimal" autocomplete="off" placeholder="e.g. 5000" />
+        </div>
+        <div class="fld-row">
+          <div class="fld">
+            <label class="sheet-label" for="forkRatedCentre">Rated load centre (in)</label>
+            <input class="sheet-input" id="forkRatedCentre" type="text" inputmode="decimal" autocomplete="off" value="24" />
+          </div>
+          <div class="fld">
+            <label class="sheet-label" for="forkActualCentre">Actual load centre (in)</label>
+            <input class="sheet-input" id="forkActualCentre" type="text" inputmode="decimal" autocomplete="off" placeholder="e.g. 36" />
+          </div>
+        </div>
+        <div class="fld">
+          <label class="sheet-label" for="forkLoadLen">Load length (in) — for an evenly loaded pallet</label>
+          <input class="sheet-input" id="forkLoadLen" type="text" inputmode="decimal" autocomplete="off" placeholder="e.g. 48" />
+        </div>
+        <button class="calc-btn" id="forkHalfBtn" type="button">Use half my load length</button>
+        <p class="calc-what" style="margin-top:8px;">For an evenly loaded pallet, the load centre is <b>half the load length</b>, measured from the fork face. The button fills the actual load centre at half your load length — check it before you trust it.</p>
+        <div class="fld">
+          <label class="sheet-label" for="forkLoadWt">Actual load weight (lb) — optional</label>
+          <input class="sheet-input" id="forkLoadWt" type="text" inputmode="decimal" autocomplete="off" placeholder="e.g. 3000" />
+        </div>
+        <div class="res-box">
+          <div class="res-line big"><span>Safe capacity at that centre</span><span id="forkOutCap">—</span></div>
+          <div class="res-msg" id="forkMsg"></div>
+        </div>
+        <p class="calc-what" style="margin-top:8px;">This panel does the <b>load-centre part only</b>. Capacity also drops with <b>mast height</b> and with <b>attachments</b> fitted — the truck's data plate and its capacity chart govern.</p>
+        <div class="save-row2">
+          <input class="sheet-input" id="forkLabel" type="text" autocomplete="off" placeholder="Label, e.g. Long pallet — yard truck" />
+          <button class="save-btn" id="forkSave" type="button">Save to Stored</button>
+        </div>
+        <p class="safety-note">Calculator only — estimates to help you plan. The truck's data plate and its capacity chart govern, every time.</p>
+      </div>
+    </div>
+
     <!-- ================= HELP ================= -->
     <div class="help-overlay" id="helpOverlay" hidden role="dialog" aria-modal="true" aria-label="Lift Buddy help">
       <div class="help-panel">
         <div class="help-head"><h2>Help — Running Lift Buddy</h2><button class="help-close" id="helpClose" type="button">Close ✕</button></div>
       <section class="howto">
         <h2>Running Lift Buddy</h2>
-        <p class="lede">The front screen is a sling-tension calculator and a plain calculator. The trade calculators — rigging, boom geometry, weight from size, outrigger pads and centre of gravity — each get their own screen off the labelled keys.</p>
+        <p class="lede">The front screen is a sling-tension calculator and a plain calculator. The trade calculators — rigging, boom geometry, weight from size, outrigger pads, centre of gravity and forklift load centres — each get their own screen off the labelled keys.</p>
         <div class="card">
           <h3>Rigging — the front screen</h3>
           <p>Type the <b>load weight in lb</b>, tap <span class="kbd">Legs</span> to set how many sling legs (it cycles 1, 2, 3, 4), tap <span class="kbd">Hitch</span> to set the hitch (Vert, Chok, Bask), then tap a <b>sling angle</b> — <span class="kbd">90°</span> <span class="kbd">60°</span> <span class="kbd">45°</span> <span class="kbd">30°</span>. The display reads the <b>tension in each leg</b>. The angle is measured from horizontal, and it is the whole ballgame: a 10,000 lb load on 2 legs is 5,000 lb a leg straight up, 5,774 at 60° — and a full <b>10,000 lb a leg at 30°</b>. Tap <span class="kbd">Store</span> to keep the result in <b>STORED</b>.</p>
@@ -777,6 +820,10 @@
         <div class="card">
           <h3>CG — two-point pick</h3>
           <p>Total weight, the distance between the two pick points, and how far the centre of gravity sits from the left pick. It splits the weight between the ends: 10,000 lb on a 20 ft span with the CG 5 ft from the left puts <b>7,500 lb on the left end</b> and 2,500 on the right. The end nearer the centre of gravity carries more — rig each end for what it actually carries.</p>
+        </div>
+        <div class="card">
+          <h3>Fork — load centre</h3>
+          <p>A forklift's plate rating only holds at its <b>rated load centre</b> — 24 in on most trucks. The load centre is where the load's weight balances, measured from the fork face; on an evenly loaded pallet it is <b>half the load length</b>. Slide the centre out and the honest capacity falls in proportion: a 5,000 lb truck with the centre at 36 in is really a <b>3,333 lb truck</b> — and lifting past that is how forklifts tip forward. The panel never shows more than the plate rating. It does the load-centre part only: capacity also drops with <b>mast height</b> and with <b>attachments</b> fitted, so the truck's data plate and its capacity chart govern.</p>
         </div>
         <div class="card">
           <h3>Plain math, memory &amp; the yellow key</h3>
@@ -907,6 +954,10 @@
       function cgSplit(wLb, spanFt, cgFromLeftFt) {
         var right = wLb * cgFromLeftFt / spanFt;
         return { left: wLb - right, right: right };
+      }
+      function forkCapacity(ratedLb, ratedCentreIn, actualCentreIn) {
+        if (actualCentreIn <= ratedCentreIn) return ratedLb;   // never more than the plate rating
+        return ratedLb * ratedCentreIn / actualCentreIn;
       }
       var CONVERSIONS = [
         { lab: "lb → kg",    fn: function (v) { return v * LB_TO_KG; } },
@@ -1373,6 +1424,7 @@
       wirePanel("weight", "weightOverlay", "weightClose");
       wirePanel("pad", "padOverlay", "padClose");
       wirePanel("cg", "cgOverlay", "cgClose");
+      wirePanel("fork", "forkOverlay", "forkClose");
       el("helpBtn").addEventListener("click", function () { openPanel("help", this); });
       el("storedBtn").addEventListener("click", function () { msg = ""; render(); openPanel("stored", this); });
       el("browserBtn").addEventListener("click", function () { openPanel("browser", this); });
@@ -1646,6 +1698,51 @@
         return { label: "Two-point pick", text: trimNum(cgResult.w, 0) + " lb on a " + trimNum(cgResult.span, 1) + " ft span, CG " + trimNum(cgResult.from, 1) + " ft from left · left carries " + trimNum(cgResult.left, 0) + " lb · right carries " + trimNum(cgResult.right, 0) + " lb" };
       }, "cgMsg");
 
+      /* ================= FORK PANEL ================= */
+      el("forkHalfBtn").addEventListener("click", function () {
+        var len = numOf(el("forkLoadLen"));
+        if (len === null || len <= 0) { el("forkMsg").textContent = "Type the load length first — the button fills the load centre at half of it."; return; }
+        el("forkActualCentre").value = String(Math.round(len / 2 * 100) / 100);
+        forkCalc();
+      });
+      var forkResult = null;
+      function forkCalc() {
+        var rated = numOf(el("forkRated")), rc = numOf(el("forkRatedCentre")), ac = numOf(el("forkActualCentre")), wt = numOf(el("forkLoadWt"));
+        var m = el("forkMsg");
+        forkResult = null;
+        m.className = "res-msg"; m.textContent = "";
+        if (rated === null || rc === null || ac === null) {
+          el("forkOutCap").textContent = "—";
+          if (rated !== null || rc !== null || ac !== null) m.textContent = "Fill in the rated capacity and both load centres to derate the truck.";
+          return;
+        }
+        if (rated <= 0 || rc <= 0 || ac <= 0) {
+          el("forkOutCap").textContent = "—";
+          m.textContent = "Capacity and load centres must all be over zero.";
+          return;
+        }
+        var cap = forkCapacity(rated, rc, ac);
+        forkResult = { rated: rated, rc: rc, ac: ac, cap: cap, wt: wt };
+        el("forkOutCap").textContent = trimNum(cap, 0) + " lb";
+        if (wt !== null && wt > 0) {
+          if (wt <= cap) {
+            m.textContent = "Within the derated capacity — margin " + trimNum(cap - wt, 0) + " lb.";
+          } else {
+            m.className = "res-msg warn-red";
+            m.textContent = "OVER by " + trimNum(wt - cap, 0) + " lb at that load centre — this is how forklifts tip forward.";
+          }
+        } else if (ac > rc) {
+          m.textContent = "Derated from the plate's " + trimNum(rated, 0) + " lb — the load centre sits past the rated " + trimNum(rc, 0) + " in.";
+        } else {
+          m.textContent = "Load centre is at or inside the rated centre — full plate capacity holds, for the load-centre part.";
+        }
+      }
+      ["forkRated", "forkRatedCentre", "forkActualCentre", "forkLoadLen", "forkLoadWt"].forEach(function (id) { el(id).addEventListener("input", forkCalc); });
+      wireSave("forkSave", "forkLabel", function () {
+        if (!forkResult) return null;
+        return { label: "Forklift load centre", text: "Rated " + trimNum(forkResult.rated, 0) + " lb at a " + trimNum(forkResult.rc, 0) + " in centre · actual centre " + trimNum(forkResult.ac, 0) + " in · safe capacity " + trimNum(forkResult.cap, 0) + " lb" };
+      }, "forkMsg");
+
       /* ================= browser sheet (Suppliers & Lookup) ================= */
       var suppliers = [];
       try { suppliers = JSON.parse(lsGet("lb.suppliers.v1") || "[]"); } catch (e) { suppliers = []; }
@@ -1732,7 +1829,8 @@
         legs: pressLegs, hitch: pressHitch,
         rig: function () { openPanel("rig", this); }, boom: function () { openPanel("boom", this); },
         weight: function () { openPanel("weight", this); }, pad: function () { openPanel("pad", this); },
-        cg: function () { openPanel("cg", this); }
+        cg: function () { openPanel("cg", this); },
+        fork: function () { openPanel("fork", this); }
       };
       for (var i = 0; i <= 9; i++) {
         (function (n) { actions["d" + n] = function () { pressDigit(String(n)); }; })(i);
