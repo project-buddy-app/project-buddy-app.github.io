@@ -790,11 +790,12 @@
       }
       function render() {
         var main = el("mainRead"), sub = el("subRead");
+        var subTxt = shownSub || msg;   // guidance messages show on the display sub-line too, not only in the Stored panel
         if (!power) { main.textContent = ""; sub.textContent = ""; }
-        else if (E) { main.textContent = entryDisplay(); sub.textContent = shownSub; }
-        else if (shownText !== null) { main.textContent = shownText; sub.textContent = shownSub; }
-        else if (shown !== null) { main.textContent = fmtByMode(shown); sub.textContent = shownSub; }
-        else { main.textContent = '0"'; sub.textContent = shownSub; }
+        else if (E) { main.textContent = entryDisplay(); sub.textContent = subTxt; }
+        else if (shownText !== null) { main.textContent = shownText; sub.textContent = subTxt; }
+        else if (shown !== null) { main.textContent = fmtByMode(shown); sub.textContent = subTxt; }
+        else { main.textContent = '0"'; sub.textContent = subTxt; }
 
         var modeNames = { fif: "FT-IN-FRAC", decft: "DEC FEET", decin: "DEC INCH" };
         el("annMode").textContent = modeNames[displayMode] + " · 1/" + RES;
