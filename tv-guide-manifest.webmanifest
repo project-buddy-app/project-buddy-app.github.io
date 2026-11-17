@@ -1,0 +1,29 @@
+{
+  "name": "TV Guide \u2014 Thunder Bay Edition",
+  "short_name": "TV Guide",
+  "start_url": "tv-guide.html",
+  "scope": "./",
+  "display": "fullscreen",
+  "background_color": "#16130f",
+  "theme_color": "#d8232a",
+  "icons": [
+    {
+      "src": "tv-guide-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "tv-guide-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "tv-guide-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
