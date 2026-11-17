@@ -38,7 +38,7 @@
   .ruled { border-top:1px solid #111; border-bottom:3px double #111; height:4px; margin:4px 0 10px; }
   .log { font-size:12.8px; line-height:1.42; }
   .log .slot { margin-bottom:9px; }
-  .log.dense { font-size:11.9px; line-height:1.34; }
+  .log.dense { font-size:12.3px; line-height:1.37; }
   .log.dense .slot { margin-bottom:6px; }
   .log.dense .time { font-size:13.5px; margin:8px 0 4px; }
   .earlier { font-size:11.8px; font-style:italic; color:#333; border:1px solid #999; padding:5px 8px; margin-bottom:9px; line-height:1.4; }
@@ -55,7 +55,7 @@
   /* lineup */
   .lineup { font-size:13px; line-height:1.5; }
   .lineup h3 { font-family:'Arial Narrow', Arial, sans-serif; font-size:15px; text-transform:uppercase; margin:12px 0 3px; border-bottom:1px solid #999; }
-  .lineup .row { display:flex; gap:7px; align-items:baseline; margin:2.5px 0; }
+  .lineup .row { display:flex; gap:7px; align-items:baseline; margin:2.5px 0; flex-wrap:wrap; }
   .note { font-size:12.5px; line-height:1.5; font-style:italic; }
   .toc { font-size:13.5px; line-height:1.9; }
   .toc b { font-variant:small-caps; }
@@ -69,6 +69,20 @@
   .ad p { font-size:14.5px; line-height:1.55; color:#cfe0f2; }
   .ad .ad-box { border:2px solid #f2b705; padding:10px 12px; margin:16px 0; font-family:Arial, sans-serif; font-size:12.5px; line-height:1.6; color:#fff; }
   .ad .ad-foot { margin-top:auto; font-family:Arial, sans-serif; font-size:10.5px; color:#9db8d2; line-height:1.6; }
+
+  .xw { display:grid; gap:0; width:100%; max-width:352px; margin:8px auto 10px; border:2px solid #111; }
+  .xw-w { background:#fff; border:.5px solid #111; aspect-ratio:1; position:relative; }
+  .xw-w span { position:absolute; top:0; left:1.5px; font-family:Arial, sans-serif; font-size:7px; font-weight:bold; color:#111; }
+  .xw-b { background:#111; aspect-ratio:1; }
+  .clues { display:flex; gap:14px; font-size:10.6px; line-height:1.38; }
+  .clues .col { flex:1; }
+  .clues h4 { font-family:'Arial Narrow', Arial, sans-serif; font-size:12px; text-transform:uppercase; border-bottom:1px solid #999; margin-bottom:3px; }
+  .clues p { margin-bottom:3px; }
+  .clues b { font-family:Arial, sans-serif; font-size:9.5px; }
+  .answers { transform:rotate(180deg); font-family:Arial, sans-serif; font-size:8.6px; color:#333; text-align:center; margin-top:12px; line-height:1.5; }
+  .tele { font-size:12.6px; line-height:1.5; }
+  .tele p { margin-bottom:10px; }
+  .tele .dept { font-family:'Arial Narrow', Arial, sans-serif; font-weight:900; letter-spacing:.6px; font-size:12.5px; }
   /* nav */
   #nav { display:flex; align-items:center; gap:14px; margin-top:8px; }
   #nav button { background:#d8232a; color:#fff; border:none; font-family:Arial, sans-serif; font-weight:bold; font-size:14px; padding:9px 18px; border-radius:6px; cursor:pointer; }
@@ -91,7 +105,7 @@
     <div class="pricebox">LOCAL<br>PROGRAMS<br>60¢</div>
     <div class="coverlines">
       <div class="cl-main">THE BUREAU IS BACK:<br><em>FBI</em> MONDAY NIGHTS</div>
-      <div class="cl-sub">Inside: Harlan Coben's <b>Final Twist</b> — the case that baffled the Ozarks, page 3 · <b>Canucks</b> play four times this week — every game flagged, page 9 · Why your guide has <b>no channel numbers</b>, page 2</div>
+      <div class="cl-sub">Inside: Harlan Coben's <b>Final Twist</b> — the case that baffled the Ozarks, page 4 · <b>Canucks</b> play four times this week — every game flagged, page 16 · Why your guide has <b>no channel numbers</b>, page 2</div>
     </div>
     <div class="gloss"></div>
   </section>
@@ -115,7 +129,7 @@
         <h3>Specialty</h3>
         <div class="row" style="line-height:2"><span class="net">SHOWCASE</span><span class="net">BRAVO</span><span class="net">SLICE</span><span class="net">AMC</span><span class="net">FX</span><span class="net">HISTORY</span><span class="net">DISCOVERY</span><span class="net">NAT GEO</span><span class="net">DOCS</span><span class="net">PARAMOUNT</span><span class="net">CTV SCI-FI</span><span class="net">CTV DRAMA</span><span class="net">CTV COMEDY</span><span class="net">CTV LIFE</span><span class="net">A&amp;E</span><span class="net">MUCH</span><span class="net">CMT</span><span class="net">CRIME+INV</span></div>
       </div>
-      <p class="note" style="margin-top:12px">Sports ruling, by request: no sports channels in this book. <b>UFC</b> cards and every <b>Vancouver Canucks</b> game are flagged in a black box wherever they land. This week the Canucks play four — every game is flagged in black where it lands, and the full card is recapped on page 9.</p>
+      <p class="note" style="margin-top:12px">Sports ruling, by request: no sports channels in this book. <b>UFC</b> cards and every <b>Vancouver Canucks</b> game are flagged in a black box wherever they land. This week the Canucks play four — every game is flagged in black where it lands, and the full card is recapped on page 16.</p>
       <div class="foot"><span>TV GUIDE</span><span>THUNDER BAY EDITION</span></div>
     </div>
   </section>
@@ -143,10 +157,22 @@
         <div class="slot"><span class="net local">CHFD · GLOBAL</span><span class="show new">FBI</span> <span class="genre">— Crime Drama.</span> <span class="syn">"Posterity." A social media influencer is murdered, and the team is called in; Nina faces a life-changing decision. (1 hr.)</span></div>
         <div class="time">8:30 PM</div>
         <div class="slot"><span class="net local">CKPR · CTV</span><span class="show new">The Fall and Rise of Reggie Dinkins</span> <span class="genre">— Comedy.</span> <span class="syn">"Hulk Want Candy." Monica is in a serious relationship for the first time since the divorce, and Reggie is having trouble accepting it. (30 min.)</span></div>
+      </div>
+      <div class="foot"><span>TV GUIDE</span><span>MONDAY, NOV. 16</span></div>
+    </div>
+  </section>
+
+  <!-- ============ MONDAY LATE ============ -->
+  <section class="page" data-title="Monday Late Night">
+    <div class="page-inner">
+      <div class="kicker"><span>Late Evening</span><span class="pg">4</span></div>
+      <h2 class="dayhead">Monday <span class="date">Nov. 16, Late</span></h2>
+      <div class="ruled"></div>
+      <div class="log dense">
         <div class="time">9:00 PM</div>
         <div class="slot"><span class="net local">CKPR · CTV</span><span class="show new">The Voice</span> <span class="genre">— Reality.</span> <span class="syn">Live Top 13, Part 2. A nostalgic night of Y2K-themed performances; the artist America saved competes for the Top 10. (1 hr.)</span></div>
         <div class="slot"><span class="net local">CHFD · GLOBAL</span><span class="show new">CIA</span> <span class="genre">— Drama.</span> <span class="syn">"Inside Men." The Agency's best handle the cases that never make the news. (1 hr.)</span></div>
-        <div class="flag">★ CANUCKS FLAG — Vancouver Canucks at Utah Mammoth, tonight 9:30 PM on Sportsnet. Four games this week; every one flagged. (Page 9.)</div>
+        <div class="flag">★ CANUCKS FLAG — Vancouver Canucks at Utah Mammoth, tonight 9:30 PM on Sportsnet. Four games this week; every one flagged. (Page 16.)</div>
         <div class="time">10:00 PM</div>
         <div class="slot"><span class="net local">CKPR · CTV</span><span class="show new">The Traitors Canada</span> <span class="genre">— Reality.</span> <span class="syn">"For Better or For Worse." The last two Traitors vow to stay together till death do them part. (1 hr.)</span></div>
         <div class="slot"><span class="net local">CHFD · GLOBAL</span><span class="show new">Harlan Coben's Final Twist</span> <span class="genre">— True Crime.</span> <span class="syn">"Blood in the Ozarks." Coben reopens the case that baffled the Ozarks. (1 hr.)</span></div>
@@ -165,7 +191,7 @@
   <!-- ============ TUESDAY ============ -->
   <section class="page" data-title="Tuesday Evening">
     <div class="page-inner">
-      <div class="kicker"><span>Evening Programs</span><span class="pg">4</span></div>
+      <div class="kicker"><span>Evening Programs</span><span class="pg">5</span></div>
       <h2 class="dayhead">Tuesday <span class="date">Nov. 17</span></h2>
       <div class="ruled"></div>
       <div class="log dense">
@@ -180,6 +206,18 @@
         <div class="time">8:00 PM</div>
         <div class="slot"><span class="net local">CKPR · CTV</span><span class="show new">Best Medicine</span> <span class="genre">— Drama.</span> <span class="syn">"Back to the Suture." Martin learns his predecessor diagnosed a patient's brain tumour moments before he died — and must deduce whose it was to save them. (1 hr.)</span></div>
         <div class="slot"><span class="net local">CHFD · GLOBAL</span><span class="show new">NCIS</span> <span class="genre">— Crime Drama.</span> <span class="syn">"Ride or Die." The Naval Criminal Investigative Service takes on crimes with evidence tied to Navy and Marine Corps personnel. (1 hr.)</span></div>
+      </div>
+      <div class="foot"><span>TV GUIDE</span><span>TUESDAY, NOV. 17</span></div>
+    </div>
+  </section>
+
+  <!-- ============ TUESDAY LATE ============ -->
+  <section class="page" data-title="Tuesday Late Night">
+    <div class="page-inner">
+      <div class="kicker"><span>Late Evening</span><span class="pg">6</span></div>
+      <h2 class="dayhead">Tuesday <span class="date">Nov. 17, Late</span></h2>
+      <div class="ruled"></div>
+      <div class="log dense">
         <div class="time">9:00 PM</div>
         <div class="slot"><span class="net local">CKPR · CTV</span><span class="show new">Doc</span> <span class="genre">— Drama.</span> <span class="syn">"Operation." Amy treats a rural patient whose condition worsened for lack of medical resources; Jake grapples with choosing the first artificial-heart patient. (1 hr.)</span></div>
         <div class="slot"><span class="net local">CHFD · GLOBAL</span><span class="show new">NCIS: New York</span> <span class="genre">— Crime Drama.</span> <span class="syn">"My Companion." A Navy admiral sacrifices himself to save an AI tech mogul after an assassination attempt. (1 hr.)</span></div>
@@ -203,7 +241,7 @@
   <!-- ============ WEDNESDAY ============ -->
   <section class="page" data-title="Wednesday Evening">
     <div class="page-inner">
-      <div class="kicker"><span>Evening Programs</span><span class="pg">5</span></div>
+      <div class="kicker"><span>Evening Programs</span><span class="pg">7</span></div>
       <h2 class="dayhead">Wednesday <span class="date">Nov. 18</span></h2>
       <div class="ruled"></div>
       <div class="log dense">
@@ -220,6 +258,18 @@
         <div class="time">8:00 PM</div>
         <div class="slot"><span class="net local">CKPR · CTV</span><span class="show new">The Floor</span> <span class="genre">— Game Show.</span> <span class="syn">"Bold Moves, Big Rewards." Two top competitors face off for control of the Floor; a fan favourite bets everything on a hard-earned alliance. (1 hr.)</span></div>
         <div class="slot"><span class="net local">CHFD · GLOBAL</span><span class="show new">Survivor</span> <span class="genre">— Reality.</span> <span class="syn">"Wilder Than a Cat in a Bathtub." A massive idol hunt — with a fake idol hidden among them — and a million-dollar coin flip revealed at Tribal Council. (90 min.)</span></div>
+      </div>
+      <div class="foot"><span>TV GUIDE</span><span>WEDNESDAY, NOV. 18</span></div>
+    </div>
+  </section>
+
+  <!-- ============ WEDNESDAY LATE ============ -->
+  <section class="page" data-title="Wednesday Late Night">
+    <div class="page-inner">
+      <div class="kicker"><span>Late Evening</span><span class="pg">8</span></div>
+      <h2 class="dayhead">Wednesday <span class="date">Nov. 18, Late</span></h2>
+      <div class="ruled"></div>
+      <div class="log dense">
         <div class="time">9:02 PM</div>
         <div class="slot"><span class="net local">CKPR · CTV</span><span class="show new">Georgie &amp; Mandy's First Marriage</span> <span class="genre">— Comedy.</span> <span class="syn">"A Party Sub and a Six-Legged Fan." Mandy's attempt to be taken seriously as a journalist backfires. (28 min.)</span></div>
         <div class="time">9:30 PM</div>
@@ -242,7 +292,7 @@
   <!-- ============ THURSDAY ============ -->
   <section class="page" data-title="Thursday Evening">
     <div class="page-inner">
-      <div class="kicker"><span>Evening Programs</span><span class="pg">6</span></div>
+      <div class="kicker"><span>Evening Programs</span><span class="pg">9</span></div>
       <h2 class="dayhead">Thursday <span class="date">Nov. 19</span></h2>
       <div class="ruled"></div>
       <div class="log dense">
@@ -259,6 +309,18 @@
         <div class="time">8:00 PM</div>
         <div class="slot"><span class="net local">CKPR · CTV</span><span class="show new">The Traitors</span> <span class="genre">— Reality.</span> <span class="syn">"I'm Fighting Till the End." Game-changing evidence at a critical roundtable; a calculated murder leaves just six standing. (1 hr.)</span></div>
         <div class="slot"><span class="net local">CHFD · GLOBAL</span><span class="show new">9-1-1</span> <span class="genre">— Drama.</span> <span class="syn">"Et Tu?" The first responders who put their lives on the line in the most frightening situations. (1 hr.)</span></div>
+      </div>
+      <div class="foot"><span>TV GUIDE</span><span>THURSDAY, NOV. 19</span></div>
+    </div>
+  </section>
+
+  <!-- ============ THURSDAY LATE ============ -->
+  <section class="page" data-title="Thursday Late Night">
+    <div class="page-inner">
+      <div class="kicker"><span>Late Evening</span><span class="pg">10</span></div>
+      <h2 class="dayhead">Thursday <span class="date">Nov. 19, Late</span></h2>
+      <div class="ruled"></div>
+      <div class="log dense">
         <div class="time">9:00 PM</div>
         <div class="slot"><span class="net local">CKPR · CTV</span><span class="show new">9-1-1: Nashville</span> <span class="genre">— Drama.</span> <span class="syn">"Tears of the Nile." Rogue and the 113 race to stop The Pharaoh's latest scheme before it turns sinister. (1 hr.)</span></div>
         <div class="slot"><span class="net local">CHFD · GLOBAL</span><span class="show new">Elsbeth</span> <span class="genre">— Crime Drama.</span> <span class="syn">"Lean Girls." Elsbeth feels the burn when a Pilates student's murder pits her against a celebrity fitness guru. (1 hr.)</span></div>
@@ -279,7 +341,7 @@
   <!-- ============ FRIDAY ============ -->
   <section class="page" data-title="Friday Evening">
     <div class="page-inner">
-      <div class="kicker"><span>Evening Programs</span><span class="pg">7</span></div>
+      <div class="kicker"><span>Evening Programs</span><span class="pg">11</span></div>
       <h2 class="dayhead">Friday <span class="date">Nov. 20</span></h2>
       <div class="ruled"></div>
       <div class="log dense">
@@ -295,6 +357,18 @@
         <div class="time">8:00 PM</div>
         <div class="slot"><span class="net local">CKPR · CTV</span><span class="show new">Celebrity Wheel of Fortune</span> <span class="genre">— Game Show.</span> <span class="syn">Celebrity contestants Rhys Darby, Jackie Tohn and David Cross spin the wheel. (1 hr.)</span></div>
         <div class="slot"><span class="net local">CHFD · GLOBAL</span><span class="show">Movie — Pretty Woman</span> <span class="genre">(1990) — Comedy/Romance.</span> <span class="syn">Richard Gere, Julia Roberts. A millionaire corporate raider pays a prostitute to be his escort for a business week in Beverly Hills. (2 hrs. 30 min.)</span></div>
+      </div>
+      <div class="foot"><span>TV GUIDE</span><span>FRIDAY, NOV. 20</span></div>
+    </div>
+  </section>
+
+  <!-- ============ FRIDAY LATE ============ -->
+  <section class="page" data-title="Friday Late Night">
+    <div class="page-inner">
+      <div class="kicker"><span>Late Evening</span><span class="pg">12</span></div>
+      <h2 class="dayhead">Friday <span class="date">Nov. 20, Late</span></h2>
+      <div class="ruled"></div>
+      <div class="log dense">
         <div class="time">9:00 PM</div>
         <div class="slot"><span class="net local">CKPR · CTV</span><span class="show new">The Traitors</span> <span class="genre">— Reality.</span> <span class="syn">"Who Do You Truly Trust?" Lies are exposed and friendships unravel as a betrayal threatens to change the game; the final five gather at the fire of truth. (1 hr.)</span></div>
         <div class="time">10:00 PM</div>
@@ -316,7 +390,7 @@
   <!-- ============ SATURDAY ============ -->
   <section class="page" data-title="Saturday Evening">
     <div class="page-inner">
-      <div class="kicker"><span>Evening Programs</span><span class="pg">8</span></div>
+      <div class="kicker"><span>Evening Programs</span><span class="pg">13</span></div>
       <h2 class="dayhead">Saturday <span class="date">Nov. 21</span></h2>
       <div class="ruled"></div>
       <div class="earlier">Earlier today: <b>CKPR</b> — Highway Thru Hell at noon; the movie <b>Barbie</b> (2023) at 1:00; Merry Kiss Cam at 3:30. <b>CHFD</b> — Three Wise Men and a Baby (2022) at 1:30; Holiday Bakeshop at 3:30.</div>
@@ -331,6 +405,18 @@
         <div class="slot"><span class="net local">CHFD · GLOBAL</span><span class="show">Family Law</span> <span class="genre">— Drama.</span> <span class="syn">"Blame It on the Mother." Abigail and Daniel represent two sisters being sued by their estranged mother for parental support. (1 hr.)</span></div>
         <div class="time">9:30 PM</div>
         <div class="slot"><span class="net local">CKPR · CTV</span><span class="show">The Big Bang Theory</span> <span class="genre">— Comedy.</span> <span class="syn">"The Line Substitution Solution." Sheldon pays Stuart to spend the day with Amy so he can go to a movie screening. (30 min.)</span></div>
+      </div>
+      <div class="foot"><span>TV GUIDE</span><span>SATURDAY, NOV. 21</span></div>
+    </div>
+  </section>
+
+  <!-- ============ SATURDAY LATE ============ -->
+  <section class="page" data-title="Saturday Late Night">
+    <div class="page-inner">
+      <div class="kicker"><span>Late Evening</span><span class="pg">14</span></div>
+      <h2 class="dayhead">Saturday <span class="date">Nov. 21, Late</span></h2>
+      <div class="ruled"></div>
+      <div class="log dense">
         <div class="time">10:00 PM</div>
         <div class="slot"><span class="net local">CKPR · CTV</span><span class="show">The Big Bang Theory</span> <span class="genre">— Comedy.</span> <span class="syn">"The Convergence Convergence." Leonard's divorced parents and Sheldon's mother visit; Wolowitz and Koothrappali think the government is after them. (30 min.)</span></div>
         <div class="slot"><span class="net local">CHFD · GLOBAL</span><span class="show">Murder in a Small Town</span> <span class="genre">— Crime Drama.</span> <span class="syn">"Blood Wedding." A body is found at a wedding between members of two feuding families. (1 hr.)</span></div>
@@ -347,7 +433,7 @@
   <!-- ============ SUNDAY ============ -->
   <section class="page" data-title="Sunday Evening">
     <div class="page-inner">
-      <div class="kicker"><span>Evening Programs</span><span class="pg">9</span></div>
+      <div class="kicker"><span>Evening Programs</span><span class="pg">15</span></div>
       <h2 class="dayhead">Sunday <span class="date">Nov. 22</span></h2>
       <div class="ruled"></div>
       <div class="earlier">Earlier today: <b>CKPR</b> — The Littlest Hobo, "The Genesis Tapes," at 8:30 this morning (some things never change, and shouldn't); NFL Football at 1:00 and again at 4:25. <b>CHFD</b> — The West Block at 11:00 this morning; Three Wiser Men and a Boy (2024) at 2:00.</div>
@@ -356,6 +442,20 @@
         <div class="slot"><span class="net local">CHFD · GLOBAL</span><span class="show new">48 Hours</span> <span class="genre">— Newsmagazine.</span> <span class="syn">"Murder at Mount Hood." A woman goes missing with her dogs from the mountain community of Welches, Oregon; her friends suspect foul play. (1 hr.)</span></div>
         <div class="time">7:30 PM</div>
         <div class="slot"><span class="net local">CHFD · GLOBAL</span><span class="show new">60 Minutes</span> <span class="genre">— Newsmagazine.</span> <span class="syn">Features on the people and events in the news — and behind the headlines. (1 hr.)</span></div>
+      </div>
+
+        <div class="flag" style="background:#f7f3e8;color:#111;border:2px solid #111">SUNDAY CLOSE-UP — Tonight's game (CKPR, 8:15) comes from Mexico City: Vikings vs. 49ers, two NFC sides who keep meeting in strange places. Minnesota has won the last two meetings, 23–17 and 22–17. Kickoff follows Football Night in America at 8:00.</div>
+      <div class="foot"><span>TV GUIDE</span><span>SUNDAY, NOV. 22</span></div>
+    </div>
+  </section>
+
+  <!-- ============ SUNDAY LATE ============ -->
+  <section class="page" data-title="Sunday Late Night">
+    <div class="page-inner">
+      <div class="kicker"><span>Late Evening</span><span class="pg">16</span></div>
+      <h2 class="dayhead">Sunday <span class="date">Nov. 22, Late</span></h2>
+      <div class="ruled"></div>
+      <div class="log dense">
         <div class="flag">★ CANUCKS FLAG — Chicago Blackhawks at Vancouver Canucks, tonight 8:00 PM on Sportsnet. That's four games this week: Utah (Mon), Seattle (Thu), Minnesota (Sat), Chicago (tonight).</div>
         <div class="time">8:00 PM</div>
         <div class="slot"><span class="net local">CKPR · CTV</span><span class="show new">Football Night in America</span> — <span class="syn">Maria Taylor, Jason Garrett, Mike Tomlin and Mike Florio recap the day's NFL highlights. (Live.)</span></div>
@@ -371,6 +471,60 @@
     </div>
   </section>
 
+
+
+  <!-- ============ TELETYPE ============ -->
+  <section class="page" data-title="TV Teletype">
+    <div class="page-inner">
+      <div class="kicker"><span>Notes, News &amp; Nonsense</span><span class="pg">17</span></div>
+      <h2 class="dayhead">TV <span class="date">Teletype</span></h2>
+      <div class="ruled"></div>
+      <div class="tele">
+        <p><span class="dept">STILL WANDERING DEPT. —</span> The Littlest Hobo turned up on CKPR Sunday at 8:30 in the morning, in "The Genesis Tapes," trying to recover videotapes that would expose his true identity. The dog has been on the road since 1979 and has never once been adopted. At this point it is clearly a lifestyle choice.</p>
+        <p><span class="dept">11:29, NOT 11:30 —</span> Saturday Night Live begins at 11:29 PM on CKPR this Saturday, as it has for fifty years. If your clock disagrees, your clock is wrong, not the show.</p>
+        <p><span class="dept">COIN-FLIP DEPT. —</span> Wednesday's Survivor (Global, 8:00) features a million-dollar coin flip revealed at Tribal Council. A coin flip. For a million dollars. The producers have stopped pretending otherwise, and honestly — respect.</p>
+        <p><span class="dept">CIVIC PRIDE DEPT. —</span> Thunder Bay's city council has a podcast, "The Minutes," exploring the details of council meetings, and CKPR airs it on Saturday mornings. Appointment listening, for exactly the people who run this town.</p>
+        <p><span class="dept">'TIL DEATH DEPT. —</span> Eternally Yours (Global, Thursdays) follows a vampire couple whose marriage has lasted 500 years and gone, in the listing's own word, "pulseless." Five centuries, and nobody suggested counselling until now.</p>
+        <p><span class="dept">ACROSS THE POND DEPT. —</span> Saturday Night Live now has a British edition — SNL UK, early Saturdays on CKPR, Jack Whitehall hosting this week. Same sketches. More polite apologies.</p>
+        <p><span class="dept">THE MAILBAG —</span> Empty. It's our first week. Letters to the editor may be delivered in person, across the room, at any hour. The editor is listening.</p>
+      </div>
+      <div class="foot"><span>TV GUIDE</span><span>TELETYPE</span></div>
+    </div>
+  </section>
+
+  <!-- ============ CROSSWORD ============ -->
+  <section class="page" data-title="Crossword">
+    <div class="page-inner">
+      <div class="kicker"><span>The TV Guide Crossword</span><span class="pg">18</span></div>
+      <h2 class="dayhead">Cross<span class="date">word</span></h2>
+      <div class="ruled"></div>
+      <div class="xw" style="grid-template-columns:repeat(14,1fr)"><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-w"><span>1</span></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-w"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-w"><span>2</span></div><div class="xw-w"></div><div class="xw-w"></div><div class="xw-w"><span>3</span></div><div class="xw-w"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-w"><span>4</span></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-w"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-w"><span>5</span></div><div class="xw-w"><span>6</span></div><div class="xw-w"></div><div class="xw-w"></div><div class="xw-w"><span>7</span></div><div class="xw-w"></div><div class="xw-w"></div><div class="xw-w"></div><div class="xw-w"></div><div class="xw-w"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-w"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-w"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-w"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-w"><span>8</span></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-w"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-w"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-w"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-w"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-w"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-w"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-w"></div><div class="xw-b"></div><div class="xw-w"><span>9</span></div><div class="xw-b"></div><div class="xw-w"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-w"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-w"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-w"><span>10</span></div><div class="xw-w"></div><div class="xw-w"></div><div class="xw-w"></div><div class="xw-w"></div><div class="xw-w"></div><div class="xw-w"></div><div class="xw-w"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-w"></div><div class="xw-b"></div><div class="xw-w"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-w"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-w"></div><div class="xw-b"></div><div class="xw-w"></div><div class="xw-b"></div><div class="xw-w"><span>11</span></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-w"><span>12</span></div><div class="xw-w"></div><div class="xw-w"></div><div class="xw-w"></div><div class="xw-w"></div><div class="xw-b"></div><div class="xw-w"></div><div class="xw-b"></div><div class="xw-w"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-w"><span>13</span></div><div class="xw-w"></div><div class="xw-w"></div><div class="xw-w"></div><div class="xw-w"></div><div class="xw-w"></div><div class="xw-w"><span>14</span></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-w"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-w"></div><div class="xw-b"></div><div class="xw-w"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-w"></div><div class="xw-b"></div><div class="xw-w"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-b"></div><div class="xw-w"></div><div class="xw-b"></div></div>
+      <div class="clues">
+        <div class="col">
+          <h4>Across</h4>
+          <p><b>2</b> Singing contest; its Live Top 13 sang Monday (CKPR)</p>
+          <p><b>5</b> Naval investigators; Tuesday is their night (Global)</p>
+          <p><b>7</b> Assassin with no memory; Saturday's movie (CKPR)</p>
+          <p><b>10</b> Castaways, idols and a million-dollar coin flip (Global)</p>
+          <p><b>12</b> Canada's entertainment newsmagazine, 7 PM weeknights (CKPR)</p>
+          <p><b>13</b> She notices everything; Thursdays (Global)</p>
+        </div>
+        <div class="col">
+          <h4>Down</h4>
+          <p><b>1</b> This week's cover story; the Bureau, Mondays (Global)</p>
+          <p><b>3</b> Dave's hockey team — four games this week</p>
+          <p><b>4</b> Philadelphia school with TV's funniest staff room</p>
+          <p><b>6</b> Lanford's first family, CKPR afternoons</p>
+          <p><b>8</b> Faithful vs. ____, at the fire of truth (CKPR)</p>
+          <p><b>9</b> Colter Shaw finds the missing; Mondays (CKPR)</p>
+          <p><b>11</b> ____ Anatomy; Grey Sloan's Thursday shift</p>
+          <p><b>14</b> The Littlest ____; still wandering Sundays</p>
+        </div>
+      </div>
+      <div class="answers">ANSWERS — ACROSS: 2 VOICE · 5 NCIS · 7 BOURNE · 10 SURVIVOR · 12 ETALK · 13 ELSBETH — DOWN: 1 FBI · 3 CANUCKS · 4 ABBOTT · 6 CONNERS · 8 TRAITORS · 9 TRACKER · 11 GREYS · 14 HOBO</div>
+      <div class="foot"><span>TV GUIDE</span><span>CROSSWORD</span></div>
+    </div>
+  </section>
 
   <!-- ============ BACK COVER ============ -->
   <section class="page backcover" data-title="Back Cover">
