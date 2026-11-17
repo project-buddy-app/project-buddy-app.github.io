@@ -3,6 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<link rel="manifest" href="tv-guide-manifest.webmanifest">
+<meta name="theme-color" content="#d8232a">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-icon" href="tv-guide-icon-192.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>TV Guide — Thunder Bay Edition — Nov. 16–22, 2026</title>
@@ -741,6 +747,11 @@
     else if (e.key === 'ArrowLeft') show(cur - 1, -1);
   });
   sync();
+</script>
+<script>
+if (location.protocol === 'https:' && 'serviceWorker' in navigator) {
+  try { navigator.serviceWorker.register('tg-sw.js'); } catch (e) {}
+}
 </script>
 </body>
 </html>
