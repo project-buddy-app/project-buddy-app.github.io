@@ -1,0 +1,24 @@
+{
+  "name": "Word Buddy",
+  "short_name": "Word Buddy",
+  "start_url": "word-buddy.html",
+  "scope": "./",
+  "display": "fullscreen",
+  "orientation": "portrait",
+  "background_color": "#dd7250",
+  "theme_color": "#dd7250",
+  "icons": [
+    {
+      "src": "word-buddy-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "word-buddy-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
