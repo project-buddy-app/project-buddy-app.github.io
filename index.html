@@ -202,6 +202,8 @@ footer .disc{max-width:52em;margin:10px auto 0;border-top:1px solid rgba(170,205
 </style>
 <!-- PB-UNDER-CONSTRUCTION-OVERLAY:STYLE -->
 <style>
+/* PB-UC OFF (Dave, 2026-11-17): overlay parked, not deleted. This one rule hides every overlay piece; remove it to bring the overlay back. */
+.pb-uc{display:none !important;}
 .pb-uc{position:fixed;z-index:99990;pointer-events:none;line-height:1;}
 .pb-uc-move{transition-property:left,top;transition-timing-function:ease-in-out;}
 .pb-uc-top{z-index:99995;}
@@ -604,7 +606,8 @@ footer .disc{max-width:52em;margin:10px auto 0;border-top:1px solid rgba(170,205
   var el = document.getElementById('pb-hc');
   var swingEl = document.getElementById('pb-hc-swing');
   if (!el || !swingEl) return;
-  document.documentElement.classList.add('pb-hc-on');
+  // PB-HC OFF (Dave, 2026-11-17): hammer cursor parked, not deleted. Uncomment the next line to bring it back.
+  // document.documentElement.classList.add('pb-hc-on');
   var tx = Math.round(window.innerWidth / 2), ty = Math.round(window.innerHeight / 2);
   var shown = false, raf = null, swingAnim = null;
   var SPARKS = '<svg width="52" height="52" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg"><g stroke="#f2b705" stroke-width="3.5" stroke-linecap="round"><line x1="35" y1="26" x2="45" y2="26"/><line x1="32.4" y1="32.4" x2="39.4" y2="39.4"/><line x1="26" y1="35" x2="26" y2="45"/><line x1="19.6" y1="32.4" x2="12.6" y2="39.4"/><line x1="17" y1="26" x2="7" y2="26"/><line x1="19.6" y1="19.6" x2="12.6" y2="12.6"/><line x1="26" y1="17" x2="26" y2="7"/><line x1="32.4" y1="19.6" x2="39.4" y2="12.6"/></g><circle cx="26" cy="26" r="2.6" fill="#ffffff"/></svg>';
