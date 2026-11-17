@@ -16,7 +16,7 @@
   * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
   html, body { height:100%; background:#1a1a1a; }
   body { font-family: Georgia, 'Times New Roman', serif; display:flex; flex-direction:column; align-items:flex-start; justify-content:center; min-height:100vh; padding:10px 0 4px 2px; }
-  #book { position:relative; width:min(94vw, 430px); aspect-ratio: 0.647; max-height: calc(100vh - 64px); perspective: 1600px; }
+  #book { position:relative; width:min(94vw, 430px, calc((100dvh - 64px) * 0.72)); height: calc(100vh - 64px); height: calc(100dvh - 64px); perspective: 1600px; }
   .page { position:absolute; inset:0; background:transparent; border-radius:2px 8px 8px 2px; transform-origin: left center; transition: transform .6s ease; transform-style: preserve-3d; display:none; }
   .face { position:absolute; inset:0; border-radius:2px 8px 8px 2px; overflow:hidden; backface-visibility:hidden; -webkit-backface-visibility:hidden; background:#f7f3e8; box-shadow: 0 6px 30px rgba(0,0,0,.55), inset 14px 0 22px -10px rgba(0,0,0,.38), inset 3px 0 6px rgba(0,0,0,.18); }
   .face.back { transform: rotateY(180deg); background:#e9e2cf; box-shadow: inset -14px 0 22px -10px rgba(0,0,0,.30); }
