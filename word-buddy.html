@@ -1559,7 +1559,8 @@ $('btnMenu').onclick = function(){
   freshState('solo', ['You','Buddy']);
   msg('Welcome to Word Buddy!');
   render();
-  store.del('wb_save'); /* the idle board is not a saved game */
+  /* the idle board is never saved (saveGame is not called here), and a real
+     saved game must SURVIVE page loads so Resume can find it */
   S = null;
   document.addEventListener('pointerdown', function(){ audioCtx(); }, { once: true });
 })();
