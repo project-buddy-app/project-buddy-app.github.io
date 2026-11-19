@@ -1,0 +1,24 @@
+{
+  "name": "Concrete Buddy",
+  "short_name": "Concrete Buddy",
+  "start_url": "concrete-buddy.html",
+  "scope": "./",
+  "display": "fullscreen",
+  "orientation": "portrait",
+  "background_color": "#0d1826",
+  "theme_color": "#0d1826",
+  "icons": [
+    {
+      "src": "concrete-buddy-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "concrete-buddy-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
